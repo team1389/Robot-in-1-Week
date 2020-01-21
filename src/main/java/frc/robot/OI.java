@@ -11,6 +11,7 @@ public class OI {
 
     public OI() {
         initControllers();
+
         Robot.drivetrain.setDefaultCommand(driveWithCurvature);
     }
 
@@ -23,11 +24,11 @@ public class OI {
     }
 
     public double driveLeftY() {
-        return driveController.getY(GenericHID.Hand.kLeft);
+        return -driveController.getY(GenericHID.Hand.kLeft);
     }
 
     public double driveRightX() {
-        return driveController.getX(GenericHID.Hand.kRight);
+        return -driveController.getX(GenericHID.Hand.kRight);
     }
 
     public boolean driveLeftBumper() {
