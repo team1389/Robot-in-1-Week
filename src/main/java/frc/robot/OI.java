@@ -28,7 +28,7 @@ public class OI {
     }
 
     public double driveRightX() {
-        return -driveController.getX(GenericHID.Hand.kRight);
+        return driveController.getX(GenericHID.Hand.kRight);
     }
 
     public boolean driveLeftBumper() {
