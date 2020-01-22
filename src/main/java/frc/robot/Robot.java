@@ -4,6 +4,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.subsystems.Drivetrain;
+import frc.subsystems.Intake;
 
 /**
  * Don't change the name of this class since the VM is set up to run this
@@ -17,6 +18,7 @@ public class Robot extends TimedRobot {
 
 
     public static Drivetrain drivetrain = new Drivetrain();
+    public static Intake intake = new Intake();
     public static OI oi = new OI();
 
     @Override
