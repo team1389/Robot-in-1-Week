@@ -3,6 +3,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.subsystems.Conveyor;
 import frc.subsystems.Drivetrain;
 import frc.subsystems.Intake;
 
@@ -19,6 +20,7 @@ public class Robot extends TimedRobot {
 
     public static Drivetrain drivetrain = new Drivetrain();
     public static Intake intake = new Intake();
+    public static Conveyor conveyor = new Conveyor();
     public static OI oi = new OI();
 
     @Override

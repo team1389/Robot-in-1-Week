@@ -2,6 +2,7 @@ package frc.commands;
 
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 import frc.subsystems.Drivetrain;
@@ -9,7 +10,7 @@ import frc.subsystems.Intake;
 
 public class RunIntake extends CommandBase {
     private Intake intake = null;
-    private boolean isIntaking = true;
+    private boolean isIntaking = false;
 
     public RunIntake(Intake intake) {
         this.intake = intake;
@@ -18,15 +19,19 @@ public class RunIntake extends CommandBase {
 
     @Override
     public void execute() {
-        if(Robot.oi.manipAButton()) {
-            isIntaking = true;
+        //left trigger
+        /*if(Robot.oi.manipStartButton()) {
+            intake.leftExtender.set(DoubleSolenoid.Value.kForward);
+            intake.rightExtender.set(DoubleSolenoid.Value.kForward);
         }
-        if(Robot.oi.manipBButton()) {
-            isIntaking = false;
-        }
+        else if(Robot.oi.manipBackButton()) {
+            intake.leftExtender.set(DoubleSolenoid.Value.kReverse);
+            intake.rightExtender.set(DoubleSolenoid.Value.kReverse);
+        }*/
 
-        if(isIntaking) {
-            intake.intakeMotor.set(ControlMode.PercentOutput, 0.5);
+
+        if(Robot.oi.manipLeftTrigger() > 0) {
+            intake.intakeMotor.set(ControlMode.PercentOutput, 0.75);
         }
         else {
             intake.intakeMotor.set(ControlMode.PercentOutput, 0);
