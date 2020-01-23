@@ -19,7 +19,7 @@ public class RunIntake extends CommandBase {
 
     @Override
     public void execute() {
-        //left trigger
+        //THIS CODE IS FOR PISTONS, SO IF YOU WANT THEM TO WORK UNCOMMENT THIS FUTURE SELF:
         /*if(Robot.oi.manipStartButton()) {
             intake.leftExtender.set(DoubleSolenoid.Value.kForward);
             intake.rightExtender.set(DoubleSolenoid.Value.kForward);
@@ -31,10 +31,11 @@ public class RunIntake extends CommandBase {
 
 
         if(Robot.oi.manipLeftTrigger() > 0) {
-            intake.intakeMotor.set(ControlMode.PercentOutput, 0.75);
+            intake.startIntaking();
+            System.out.println("Jebediah is trying to intake power cells, and probably failing!");
         }
         else {
-            intake.intakeMotor.set(ControlMode.PercentOutput, 0);
+            intake.stopIntaking();
         }
     }
 }
