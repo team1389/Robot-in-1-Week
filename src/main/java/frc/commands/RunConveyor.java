@@ -28,11 +28,11 @@ public class RunConveyor extends CommandBase {
         }
 
         if(isConveying) {
-            conveyor.conveyorMotor.set(ControlMode.PercentOutput, 0.5);
-            System.out.println("Conveying");
+            conveyor.startConveying();
+            System.out.println("Jebediah is yeeting balls through the conveyor belt!");
         }
         else {
-            conveyor.conveyorMotor.set(ControlMode.PercentOutput, 0);
+            conveyor.stopConveying();
         }
 
     }
