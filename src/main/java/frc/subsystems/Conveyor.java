@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class Conveyor extends SubsystemBase {
-    public TalonSRX conveyorMotor;
+    private TalonSRX conveyorMotor;
 
     public Conveyor() {
         conveyorMotor = new TalonSRX(RobotMap.CONVEYOR_MOTOR);

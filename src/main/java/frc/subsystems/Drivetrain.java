@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class Drivetrain extends SubsystemBase {
-    public CANSparkMax rightA, rightB, leftA, leftB;
-    SpeedControllerGroup right, left;
-    DifferentialDrive differentialDrive;
+    private DifferentialDrive differentialDrive;
+    private SpeedControllerGroup right, left;
+    private CANSparkMax rightA, rightB, leftA, leftB;
 
     public Drivetrain() {
         rightA = new CANSparkMax(RobotMap.RIGHT_DRIVE_A, CANSparkMaxLowLevel.MotorType.kBrushless);
