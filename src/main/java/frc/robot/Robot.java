@@ -1,7 +1,6 @@
 package frc.robot;
 
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -28,9 +27,9 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
-        oi.shooterHold.shootBool = false;
-        oi.shooterHold.timer.start();
-        oi.shooterHold.timer.reset();
+        oi.shoot.shootBool = false;
+        oi.shoot.timer.start();
+        oi.shoot.timer.reset();
     }
 
     /**
