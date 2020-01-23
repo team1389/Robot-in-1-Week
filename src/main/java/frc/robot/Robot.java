@@ -1,8 +1,11 @@
 package frc.robot;
 
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.subsystems.Shooter;
+
 
 /**
  * Don't change the name of this class since the VM is set up to run this
@@ -14,12 +17,15 @@ public class Robot extends TimedRobot {
      * Ex: public static System system = new System();
      */
 
-
+    public static Shooter shooter = new Shooter();
     public static OI oi = new OI();
 
 
     @Override
     public void robotInit() {
+        oi.shooterHold.shootBool = false;
+        oi.shooterHold.timer.start();
+        oi.shooterHold.timer.reset();
     }
 
     /**
@@ -49,7 +55,13 @@ public class Robot extends TimedRobot {
      * This function is called periodically during operator control.
      */
     @Override
+    public void teleopInit() {
+
+    }
+
+    @Override
     public void teleopPeriodic() {
+        CommandScheduler.getInstance().run();
     }
 
     /**
@@ -57,5 +69,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void testPeriodic() {
+        //shooter.frontShooterLeft.set(ControlMode.PercentOutput, 1);
+
     }
 }
