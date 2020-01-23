@@ -26,7 +26,7 @@ public class ShooterHold extends CommandBase {
             timer.reset();
             shootBool = true;
 
-            //shooter.frontShooterRight.set(ControlMode.PercentOutput, 1);
+            shooter.frontShooterRight.set(ControlMode.PercentOutput, 1);
             shooter.frontShooterLeft.set(ControlMode.PercentOutput, 1);
         }
 
@@ -38,7 +38,7 @@ public class ShooterHold extends CommandBase {
         if(Robot.oi.manipRightTrigger() > 0 && shootBool && timer.get() >= 3) {
             shooter.backShooterRight.set(ControlMode.PercentOutput, 0);
             shooter.backShooterLeft.set(ControlMode.PercentOutput, 0);
-            //shooter.frontShooterRight.set(ControlMode.PercentOutput, 0);
+            shooter.frontShooterRight.set(ControlMode.PercentOutput, 0);
             shooter.frontShooterLeft.set(ControlMode.PercentOutput, 0);
         }
 
@@ -49,6 +49,7 @@ public class ShooterHold extends CommandBase {
             shooter.frontShooterRight.set(ControlMode.PercentOutput, 0);
             shooter.frontShooterLeft.set(ControlMode.PercentOutput, 0);
             shootBool = false;
+            System.out.print("pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew pew");
         }
         System.out.println(timer.get());
     }

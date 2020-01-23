@@ -4,5 +4,5 @@ Structure Systems as below:
 
 ├── system_folder/
 │   ├── System.java
-│   ├── commands/
+│   ├── frc.commands/
 │       ├── SystemExampleCommand.java
