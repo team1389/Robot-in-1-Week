@@ -9,8 +9,8 @@ public class RunConveyor extends CommandBase {
     private Conveyor conveyor = null;
     private boolean isConveying = false;
 
-    public RunConveyor(Conveyor conveyor) {
-        this.conveyor = conveyor;
+    public RunConveyor() {
+        conveyor = Robot.conveyor;
 
         addRequirements(conveyor);
     }

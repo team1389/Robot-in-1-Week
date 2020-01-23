@@ -12,8 +12,8 @@ public class RunIntake extends CommandBase {
     private Intake intake = null;
     private boolean isIntaking = false;
 
-    public RunIntake(Intake intake) {
-        this.intake = intake;
+    public RunIntake() {
+        intake = Robot.intake;
         addRequirements(intake);
     }
 

@@ -7,8 +7,8 @@ import frc.subsystems.Drivetrain;
 public class DriveWithCurvature extends CommandBase {
     private Drivetrain drivetrain = null;
 
-    public DriveWithCurvature(Drivetrain drivetrain) {
-        this.drivetrain = drivetrain;
+    public DriveWithCurvature() {
+        drivetrain = Robot.drivetrain;
         addRequirements(drivetrain);
     }
 
