@@ -3,11 +3,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-
-import frc.subsystems.Shooter;
 import frc.subsystems.Conveyor;
 import frc.subsystems.Drivetrain;
 import frc.subsystems.Intake;
+import frc.subsystems.Shooter;
 
 /**
  * Don't change the name of this class since the VM is set up to run this
@@ -27,9 +26,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void robotInit() {
-        oi.shoot.shootBool = false;
-        oi.shoot.timer.start();
-        oi.shoot.timer.reset();
+
     }
 
     /**
@@ -65,7 +62,6 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopPeriodic() {
-        CommandScheduler.getInstance().run();
     }
 
     /**

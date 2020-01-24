@@ -13,7 +13,7 @@ public class Shoot extends SequentialCommandGroup {
         addRequirements(shooter);
         addCommands(new InstantCommand(() -> shooter.setShooterVoltage(1)), new WaitCommand(2),
                 new InstantCommand(() -> shooter.setIndexerVoltage(0.5)),
-                new WaitCommand(1));
+                new WaitCommand(1), new InstantCommand(() -> shooter.stopMotors()));
     }
 
 }

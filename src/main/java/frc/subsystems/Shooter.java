@@ -41,4 +41,11 @@ public class Shooter extends SubsystemBase {
         indexerRight.set(ControlMode.PercentOutput, percent);
     }
 
+    public void stopMotors() {
+        shooterLeft.set(ControlMode.PercentOutput, 0);
+        shooterRight.set(ControlMode.PercentOutput, 0);
+        indexerLeft.set(ControlMode.PercentOutput, 0);
+        indexerRight.set(ControlMode.PercentOutput, 0);
+    }
+
 }

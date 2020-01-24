@@ -2,6 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.commands.DriveWithCurvature;
 import frc.commands.RunConveyor;
 import frc.commands.RunIntake;
@@ -10,14 +11,18 @@ import frc.commands.Shoot;
 public class OI {
     public XboxController driveController, manipController;
     Shoot shoot = new Shoot();
-    DriveWithCurvature driveWithCurvature = new DriveWithCurvature(Robot.drivetrain);
-    RunIntake runIntake = new RunIntake(Robot.intake);
-    RunConveyor runConveyor = new RunConveyor(Robot.conveyor);
+    DriveWithCurvature driveWithCurvature = new DriveWithCurvature();
+    RunIntake runIntake = new RunIntake();
+    RunConveyor runConveyor = new RunConveyor();
+
+    JoystickButton bBtn;
 
     public OI() {
         initControllers();
 
-        Robot.shooter.setDefaultCommand(shoot);
+        bBtn = new JoystickButton(manipController, XboxController.Button.kB.value);
+        bBtn.whenReleased(new Shoot());
+
         Robot.drivetrain.setDefaultCommand(driveWithCurvature);
         Robot.intake.setDefaultCommand(runIntake);
         Robot.conveyor.setDefaultCommand(runConveyor);
