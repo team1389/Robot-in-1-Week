@@ -15,7 +15,6 @@ import static frc.robot.Robot.shooter;
 
 public class OI {
     public XboxController driveController, manipController;
-    Shoot shoot = new Shoot();
     DriveWithCurvature driveWithCurvature = new DriveWithCurvature();
     RunIntake runIntake = new RunIntake();
     RunConveyor runConveyor = new RunConveyor();
@@ -30,7 +29,7 @@ public class OI {
         initControllers();
 
         bBtn = new JoystickButton(manipController, XboxController.Button.kB.value);
-        bBtn.whenReleased(new Shoot());
+        bBtn.whileHeld(new Shoot());
 
         aBtn = new JoystickButton(manipController, XboxController.Button.kA.value);
         aBtn.toggleWhenPressed(new RunIntake());
@@ -49,7 +48,6 @@ public class OI {
 
         Robot.drivetrain.setDefaultCommand(driveWithCurvature);
     }
-
     /**
      * Initialize JoystickButtons and Controllers
      */
