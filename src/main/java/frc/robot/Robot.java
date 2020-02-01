@@ -7,6 +7,7 @@ import frc.subsystems.Conveyor;
 import frc.subsystems.Drivetrain;
 import frc.subsystems.Intake;
 import frc.subsystems.Shooter;
+import frc.subsystems.Climber;
 
 /**
  * Don't change the name of this class since the VM is set up to run this
@@ -21,6 +22,7 @@ public class Robot extends TimedRobot {
     public static Drivetrain drivetrain = new Drivetrain();
     public static Intake intake = new Intake();
     public static Conveyor conveyor = new Conveyor();
+    public static Climber climber = new Climber();
 
     public static OI oi = new OI();
 
