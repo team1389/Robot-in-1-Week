@@ -14,10 +14,12 @@ public class DriveWithCurvature extends CommandBase {
 
     @Override
     public void execute() {
-        double throttle = Robot.oi.driveLeftY()/2;
-        double rotation = Robot.oi.driveRightX()/2;
+        double throttle = Robot.oi.driveLeftY();
+        double rotation = -(Robot.oi.driveRightY());
         boolean isQuickTurn = Robot.oi.driveLeftBumper();
         System.out.println("Jebediah is having fun driving around!");
-        Robot.drivetrain.drive(throttle, rotation, isQuickTurn);
+
+        Robot.drivetrain.drive(throttle, rotation);
+
     }
 }
