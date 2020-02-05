@@ -1,5 +1,6 @@
 package frc.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -24,6 +25,13 @@ public class Drivetrain extends SubsystemBase {
         differentialDrive = new DifferentialDrive(left, right);
     }
 
+    public void set(double leftPower, double rightPower) {
+        leftA.set(leftPower);
+        leftB.set(leftPower);
+
+        rightA.set(-rightPower);
+        rightB .set(-rightPower);
+    }
     public void drive(double leftY, double rightX, boolean leftBumper) {
         differentialDrive.curvatureDrive(leftY, rightX, leftBumper);
     }

@@ -1,8 +1,10 @@
 package frc.robot;
 
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.commands.DriveWithCurvature;
 import frc.subsystems.Conveyor;
 import frc.subsystems.Drivetrain;
 import frc.subsystems.Intake;
@@ -24,9 +26,10 @@ public class Robot extends TimedRobot {
 
     public static OI oi = new OI();
 
+
     @Override
     public void robotInit() {
-
+        NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
     }
 
     /**
