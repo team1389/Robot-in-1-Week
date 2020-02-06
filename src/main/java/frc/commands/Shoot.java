@@ -1,38 +1,73 @@
 package frc.commands;
 
 
+import com.revrobotics.CANPIDController;
+import com.revrobotics.ControlType;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
+import frc.robot.Robot;
 
-import static frc.robot.Robot.shooter;
+import static frc.robot.Robot.*;
 
 public class Shoot extends SequentialCommandGroup {
 
     public Shoot() {
         addRequirements(shooter);
-        addCommands(new ShootOnce(), new ShootOnce(), new ShootOnce(), new ShootOnce(), new ShootOnce());
-    }
-
-    private class ShootOnce extends SequentialCommandGroup {
-        public ShootOnce() {
-            addRequirements(shooter);
-            addCommands(new InstantCommand(() -> shooter.setShooterVoltage(1)),
-                    new WaitCommand(2),
-                    new InstantCommand(() -> shooter.setIndexerVoltage(0.5)),
-                    new WaitCommand(1)
-            );
-        }
-
-        @Override
-        public void end(boolean interrupted) {
-            shooter.setIndexerVoltage(0);
-        }
+        addCommands(new ShootOnce());
     }
 
     @Override
     public void end(boolean interrupted) {
         shooter.stopMotors();
     }
+
+    public static class SpinUpShooters extends CommandBase {
+        private CANPIDController pid;
+        private double shooterRPM;
+        private double shooterTargetRPM;
+        private double tolerance, threshold;
+
+
+        public SpinUpShooters() {
+            addRequirements(Robot.shooter);
+            pid = Robot.shooter.getShooterLeftPIDController();
+        }
+
+        @Override
+        public void initialize() {
+            shooterTargetRPM = 20;
+            pid.setReference(shooterTargetRPM, ControlType.kVelocity);
+
+        }
+
+        @Override
+        public void execute() {
+            shooterRPM = Robot.shooter.getShooterLeftRPM();
+            System.out.println("Shooter RPM " + shooterRPM);
+        }
+
+
+        //@Override
+        /*public boolean isFinished() {
+            return tolerance <= Math.abs(shooterTargetRPM - threshold);
+        }*/
+
+    }
+
+    private class ShootOnce extends SequentialCommandGroup {
+        public ShootOnce() {
+            addRequirements(shooter, Robot.indexer);
+            addCommands(new SpinUpShooters(), new InstantCommand(() -> indexer.runIndexer(1)), new WaitCommand(0.25),
+                    new InstantCommand(() -> conveyor.startConveying()), new WaitCommand(0.5));
+        }
+
+        @Override
+        public void end(boolean interrupted) {
+            shooter.stopMotors();
+        }
+    }
+
 
 }

@@ -8,44 +8,58 @@
 package frc.subsystems;
 
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.revrobotics.CANPIDController;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class Shooter extends SubsystemBase {
 
-    private final TalonSRX shooterLeft;
-    private final TalonSRX shooterRight;
-    private final TalonSRX indexerLeft;
-    private final TalonSRX indexerRight;
-
+    public final CANSparkMax shooterTop;
+    public final CANSparkMax shooterBottom;
+    public int kP = 1;
+    public int kI = 0;
+    public int kD = 0;
+    public CANPIDController pid;
 
     public Shooter() {
-        shooterLeft = new TalonSRX(RobotMap.FRONT_SHOOTER_LEFT);
-        shooterRight = new TalonSRX(RobotMap.FRONT_SHOOTER_RIGHT);
-        indexerLeft = new TalonSRX(RobotMap.BACK_SHOOTER_LEFT);
-        indexerRight = new TalonSRX(RobotMap.BACK_SHOOTER_RIGHT);
+        shooterTop = new CANSparkMax(RobotMap.SHOOTER_TOP, CANSparkMaxLowLevel.MotorType.kBrushless);
+        shooterBottom = new CANSparkMax(RobotMap.SHOOTER_BOTTOM, CANSparkMaxLowLevel.MotorType.kBrushless);
+        shooterBottom.follow(shooterTop);
 
-        shooterRight.setInverted(true);
-        indexerRight.setInverted(true);
+        pid = new CANPIDController(shooterTop);
+        pid.setP(kP);
+        pid.setI(kI);
+        pid.setD(kD);
+        shooterBottom.setInverted(false);
     }
 
     public void setShooterVoltage(double percent) {
-        shooterLeft.set(ControlMode.PercentOutput, percent);
-        shooterRight.set(ControlMode.PercentOutput, percent);
-    }
-
-    public void setIndexerVoltage(double percent) {
-        indexerLeft.set(ControlMode.PercentOutput, percent);
-        indexerRight.set(ControlMode.PercentOutput, percent);
+        shooterBottom.set(percent);
     }
 
     public void stopMotors() {
-        shooterLeft.set(ControlMode.PercentOutput, 0);
-        shooterRight.set(ControlMode.PercentOutput, 0);
-        indexerLeft.set(ControlMode.PercentOutput, 0);
-        indexerRight.set(ControlMode.PercentOutput, 0);
+        shooterTop.set(0);
+        shooterBottom.set(0);
     }
 
+    public CANPIDController getShooterLeftPIDController() {
+        return pid;
+    }
+
+    public double getShooterLeftRPM() {
+        return shooterTop.getEncoder().getVelocity();
+    }
+
+    public double getShooterRightRPM() {
+        return shooterBottom.getEncoder().getVelocity();
+    }
+
+
+    public void runShooter() {
+        shooterTop.set(1);
+//        shooterTop.set(1);
+        System.out.println("Running shoot method 3");
+    }
 }

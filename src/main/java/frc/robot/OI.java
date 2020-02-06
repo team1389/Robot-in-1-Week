@@ -22,6 +22,7 @@ public class OI {
     JoystickButton bBtn;
     JoystickButton aBtn;
     JoystickButton xBtn;
+    JoystickButton yBtn;
     JoystickButton lBumper;
 
 
@@ -39,6 +40,9 @@ public class OI {
 
         lBumper = new JoystickButton(manipController, XboxController.Button.kBumperLeft.value);
         lBumper.toggleWhenPressed(new RunConveyor());
+
+        yBtn = new JoystickButton(manipController, XboxController.Button.kB.value);
+        yBtn.toggleWhenPressed(new Shoot.SpinUpShooters());
 
 
 
