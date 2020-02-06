@@ -19,6 +19,7 @@ public class Drivetrain extends SubsystemBase {
     public CANSparkMax rightA, rightB, leftA, leftB;
     private AHRS ahrs;
 
+
     public Drivetrain() {
         rightA = new CANSparkMax(RobotMap.RIGHT_DRIVE_A, CANSparkMaxLowLevel.MotorType.kBrushless);
         rightB = new CANSparkMax(RobotMap.RIGHT_DRIVE_B, CANSparkMaxLowLevel.MotorType.kBrushless);
