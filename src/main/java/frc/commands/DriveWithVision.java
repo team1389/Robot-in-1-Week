@@ -9,8 +9,6 @@ import frc.subsystems.Drivetrain;
 public class DriveWithVision extends CommandBase {
     private Drivetrain drivetrain;
 
-    //I HAVE MANY VARIABLES. SOME SHOULD MAYBE BE LOCAL. SOME HAVE UNCLEAR NAMES. BUT I TRIED TO ORGANIZE THEM.
-
     //Rotation moving average variables:
     private double[] recentRotations = {0, 0, 0};
     private int rotationWriteTo = 0;
