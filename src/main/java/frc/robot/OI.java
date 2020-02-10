@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
+import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.commands.*;
 
@@ -15,7 +16,7 @@ import static frc.robot.Robot.shooter;
 
 public class OI {
     public XboxController driveController, manipController;
-    DriveWithCurvature driveWithCurvature = new DriveWithCurvature();
+    //DriveWithCurvature driveWithCurvature = new DriveWithCurvature();
     RunIntake runIntake = new RunIntake();
     RunConveyor runConveyor = new RunConveyor();
 
@@ -41,17 +42,14 @@ public class OI {
         lBumper = new JoystickButton(manipController, XboxController.Button.kBumperLeft.value);
         lBumper.toggleWhenPressed(new RunConveyor());
 
-        yBtn = new JoystickButton(manipController, XboxController.Button.kB.value);
+        yBtn = new JoystickButton(manipController, XboxController.Button.kY.value);
         yBtn.toggleWhenPressed(new Shoot.SpinUpShooters());
 
+        //Robot.drivetrain.setDefaultCommand(driveWithCurvature);
 
-
-
-
-
-
-        Robot.drivetrain.setDefaultCommand(driveWithCurvature);
+        System.out.println("OI");
     }
+
     /**
      * Initialize JoystickButtons and Controllers
      */

@@ -2,6 +2,8 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.commands.Shoot;
 import frc.subsystems.*;
 
 /**
@@ -34,7 +36,7 @@ public class Robot extends TimedRobot {
     @Override
     public void robotPeriodic() {
 
-//        CommandScheduler.getInstance().run();
+        CommandScheduler.getInstance().run();
     }
 
 
@@ -55,11 +57,14 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopInit() {
-
+        //CommandScheduler.getInstance().schedule(new Shoot.SpinUpShooters());
     }
 
     @Override
     public void teleopPeriodic() {
+        shooter.shooterBottom.set(1);
+        //shooter.runShooter();
+//        System.out.println(oi.yBtn.get());
         //shooter.runShooter();
     }
 

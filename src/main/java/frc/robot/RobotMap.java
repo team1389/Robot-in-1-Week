@@ -4,8 +4,8 @@ package frc.robot;
  * define Hardware Ports in here
  */
 public class RobotMap {
-    public static final int SHOOTER_TOP = 2;
-    public static final int SHOOTER_BOTTOM = 3;
+    public static final int SHOOTER_TOP = 3;
+    public static final int SHOOTER_BOTTOM = 4;
     public static final int INDEXER_LEFT = 6;
     public static final int INDEXER_RIGHT = 7;
     public static final int RIGHT_DRIVE_A = 1;

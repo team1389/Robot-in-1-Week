@@ -18,7 +18,7 @@ public class Shooter extends SubsystemBase {
 
     public final CANSparkMax shooterTop;
     public final CANSparkMax shooterBottom;
-    public double kP = 0.000350;
+    public double kP = 0.000350; //0.000350
     public double kI = 0.000001;
     public int kD = 0;
     public CANPIDController pid;

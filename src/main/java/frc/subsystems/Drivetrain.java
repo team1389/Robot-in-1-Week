@@ -14,27 +14,24 @@ public class Drivetrain extends SubsystemBase {
     private SpeedControllerGroup right, left;
 
     public Drivetrain() {
-        rightA = new CANSparkMax(RobotMap.RIGHT_DRIVE_A, CANSparkMaxLowLevel.MotorType.kBrushless);
-        rightB = new CANSparkMax(RobotMap.RIGHT_DRIVE_B, CANSparkMaxLowLevel.MotorType.kBrushless);
-        right = new SpeedControllerGroup(rightA, rightB);
+        //rightA = new CANSparkMax(RobotMap.RIGHT_DRIVE_A, CANSparkMaxLowLevel.MotorType.kBrushless);
+        //rightB = new CANSparkMax(RobotMap.RIGHT_DRIVE_B, CANSparkMaxLowLevel.MotorType.kBrushless);
+        //right = new SpeedControllerGroup(rightA, rightB);
 
-        leftA = new CANSparkMax(RobotMap.LEFT_DRIVE_A, CANSparkMaxLowLevel.MotorType.kBrushless);
-        leftB = new CANSparkMax(RobotMap.LEFT_DRIVE_B, CANSparkMaxLowLevel.MotorType.kBrushless);
-        left = new SpeedControllerGroup(leftA, leftB);
+        //leftA = new CANSparkMax(RobotMap.LEFT_DRIVE_A, CANSparkMaxLowLevel.MotorType.kBrushless);
+        //leftB = new CANSparkMax(RobotMap.LEFT_DRIVE_B, CANSparkMaxLowLevel.MotorType.kBrushless);
+        //left = new SpeedControllerGroup(rightA);
 
 
-        differentialDrive = new DifferentialDrive(left, right);
+        //differentialDrive = new DifferentialDrive(left, right);
     }
 
     public void drive(double leftY, double rightY) {
         differentialDrive.tankDrive(leftY, rightY);
-
-
     }
 
     @Override
     public void periodic() {
         // This method will be called once per scheduler run; use it for debugging and stuff
-
     }
 }
